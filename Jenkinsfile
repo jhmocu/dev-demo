@@ -29,12 +29,6 @@ pipeline {
             }
         }
 
-        stage('Prepare WAR and Dockerfile') {
-            steps {
-                sh 'sudo cp target/demo-0.0.1-SNAPSHOT.jar ${JAR_FILE_NAME}'
-            }
-        }
-
         stage('Copy to Remote Server') {
             steps {
                 sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
